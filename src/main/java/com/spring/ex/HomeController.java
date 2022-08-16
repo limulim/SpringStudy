@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Handles requests for the application home page.
@@ -50,6 +51,27 @@ public class HomeController {
 		
 	}//test()
 	
+	@RequestMapping("member/check")
+	public String check(@RequestParam("id") String id, @RequestParam("name") String name, Model model ){
+		model.addAttribute("id", id);
+		model.addAttribute("name", name);
+		return "member/check";
+	}
+//	@RequestMapping("member/join")
+//	public String personInfo(@RequestParam("name")String name, @RequestParam("id")String id,
+//		@RequestParam("address")String adress, @RequestParam("email")String email, Model model) {
+//		Person person = new Person();
+//		person.setName(name);
+//		person.setId(id);
+//		person.setAddress(adress);
+//		person.setEmail(email);
+//	
+//		model.addAttribute("personInfo", person);
+//		
+//		return"member/join";
 	
-	
+		@RequestMapping("member/join")
+		public String personInfo(Person person) {
+			return "member/join";
+}
 }
